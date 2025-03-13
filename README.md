@@ -43,7 +43,7 @@ git submodule update --init
 
 ## To use inside your code
 ```
-from deploy-name-get.py_namegen import genname()
+from deploy_name_gen.py_namegen import genname()
 ```
 
 ```
