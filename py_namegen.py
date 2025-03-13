@@ -28,7 +28,6 @@ adjs = ["red","orange","yellow",
         "sharp","dull","neat","snug","sly",
         "loyal","canny","chic","icy","wry",
         "giddy","fussy","bold","agile"]
-adjs_version = 2
 nouns= ["fox","wolf","hare","mouse",
         "llama","planet","sun","dog",
         "cat","eagle","hawk",
@@ -47,7 +46,6 @@ nouns= ["fox","wolf","hare","mouse",
         "boar","goat","gecko",
         "eel","carp","pike","shark",
         "tuna","salmon","dove","stork"]
-nouns_version = 1
 
 def genname():
     theadj = random.choices(adjs)[0]
