@@ -1,4 +1,5 @@
 import random
+import argparse
 
 adjs = ["red","orange","yellow",
         "green","blue","violet",
@@ -47,20 +48,21 @@ nouns= ["fox","wolf","hare","mouse",
         "eel","carp","pike","shark",
         "tuna","salmon","dove","stork"]
 
-def genname(obj_len=8,digits=2,separator="-")->str:
+
+def genname(max_obj_len=8,digits=2,separator="-")->str:
     """
     Generates a random name in the format:
     adjective-noun-XX, XX is two digits number
 
     Parameters:
         digits (int): Number of digits to use for the suffix, def is 2
-        obj_len (int): Len of adj-noun combination (exc. separator), def is 8
+        max_obj_len (int): Max len of adj-noun combination (exc. separator), def is 8
         separator (str): Separator between Adj,noun and digits, def is "-" 
     """
     while True:
         the_adj  = random.choice(adjs)
         the_noun = random.choice(nouns)
-        if len(the_adj + the_noun) <= obj_len:
+        if len(the_adj + the_noun) <= max_obj_len:
             break
     max_number = 10**digits-1
     idx    = str(random.randint(1,max_number))
@@ -70,5 +72,18 @@ def genname(obj_len=8,digits=2,separator="-")->str:
     print(fullname)
     return fullname
 
+
 if __name__ == "__main__":
-    genname()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-l","--max_obj_len", 
+                        help="max object len except for separator",
+                        default=8, type=int)
+    parser.add_argument("-d","--digits", help="len of digits in suffix",
+                        default=2, type=int)
+    parser.add_argument("-s","--separator", 
+                        help="separator to divide words and digital suffix",
+                        default="-",type=str)
+    args = parser.parse_args()
+    genname(max_obj_len=args.max_obj_len,
+            digits=args.digits,
+            separator=args.separator)
