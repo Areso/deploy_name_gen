@@ -47,15 +47,26 @@ nouns= ["fox","wolf","hare","mouse",
         "eel","carp","pike","shark",
         "tuna","salmon","dove","stork"]
 
-def genname():
-    theadj = random.choices(adjs)[0]
-    thenoun= random.choices(nouns)[0]
-    if len(theadj+thenoun)>8:
-        return genname()
-    idx    = str(random.randint(1,99))
-    if len(idx)==1:
+def genname(obj_len=8,digits=2,separator="-")->str:
+    """
+    Generates a random name in the format:
+    adjective-noun-XX, XX is two digits number
+
+    Parameters:
+        digits (int): Number of digits to use for the suffix, def is 2
+        obj_len (int): Len of adj-noun combination (exc. separator), def is 8
+        separator (str): Separator between Adj,noun and digits, def is "-" 
+    """
+    while True:
+        the_adj  = random.choice(adjs)
+        the_noun = random.choice(nouns)
+        if len(the_adj + the_noun) <= obj_len:
+            break
+    max_number = 10**digits-1
+    idx    = str(random.randint(1,max_number))
+    if len(idx)<digits:
         idx  = "0"+idx
-    fullname = f"{theadj}-{thenoun}-{idx}"
+    fullname = f"{the_adj}{separator}{the_noun}{separator}{idx}"
     print(fullname)
     return fullname
 
