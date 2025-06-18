@@ -28,7 +28,8 @@ adjs = ["red","orange","yellow",
         "zany","brisk","quiet","rough",
         "sharp","dull","neat","snug","sly",
         "loyal","canny","chic","icy","wry",
-        "giddy","fussy","bold","agile"]
+        "giddy","fussy","bold","agile","wise",
+        "daring","magic","honest"]
 nouns= ["fox","wolf","hare","mouse",
         "llama","planet","sun","dog",
         "cat","eagle","hawk",
